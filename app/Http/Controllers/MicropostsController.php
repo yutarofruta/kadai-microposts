@@ -36,14 +36,14 @@ class MicropostsController extends Controller
            'content' => $request->content, 
         ]);
         
-        return back;
+        return back();
     }
     
     public function destroy($id) {
         
-        $micropost = Microposts::find($id);
+        $micropost = Micropost::find($id);
         
-        if(\Auth::id == $micropost->user_id) {
+        if(\Auth::id() == $micropost->user_id) {
             $micropost->delete();
         }
         
